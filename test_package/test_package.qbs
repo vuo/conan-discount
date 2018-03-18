@@ -19,7 +19,7 @@ Project {
 		// The LLVM/Clang libs get automatically added by the `requires` line,
 		// but this package doesn't need to link with them,
 		// so overwrite it with just the library we need.
-		cpp.dynamicLibraries: [ 'discount' ]
+		cpp.dynamicLibraries: [ 'markdown' ]
 
 		Depends {
 			condition: qbs.targetOS.contains('macos')
