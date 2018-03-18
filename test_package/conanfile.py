@@ -1,4 +1,5 @@
 from conans import ConanFile
+import platform
 
 class DiscountTestConan(ConanFile):
     generators = 'qbs'
