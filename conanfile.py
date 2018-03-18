@@ -24,10 +24,11 @@ class DiscountConan(ConanFile):
             self.run('./configure.sh --prefix=../%s --shared --enable-all-features' % self.install_dir)
             self.run('make')
             self.run('make install')
+            self.run('install_name_tool -id @rpath/libmarkdown.dylib ../%s/lib/libmarkdown.dylib' % self.install_dir)
 
     def package(self):
         self.copy('*.h', src='%s/include' % self.install_dir, dst='include')
         self.copy('*.dylib', src='%s/lib' % self.install_dir, dst='lib')
 
     def package_info(self):
-        self.cpp_info.libs = ['discount']
+        self.cpp_info.libs = ['markdown']
