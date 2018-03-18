@@ -16,11 +16,6 @@ Project {
 		cpp.cxxStandardLibrary: 'libstdc++'
 		cpp.rpaths: [ buildDirectory + '/../../lib' ]
 
-		// The LLVM/Clang libs get automatically added by the `requires` line,
-		// but this package doesn't need to link with them,
-		// so overwrite it with just the library we need.
-		cpp.dynamicLibraries: [ 'markdown' ]
-
 		Depends {
 			condition: qbs.targetOS.contains('macos')
 			name: 'xcode'
