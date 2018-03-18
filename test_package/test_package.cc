@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <string.h>
+extern "C" {
 #include "mkdio.h"
+}
 
 int main()
 {
