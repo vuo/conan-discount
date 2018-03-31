@@ -26,6 +26,8 @@ class DiscountConan(ConanFile):
         tools.get('http://www.pell.portland.or.us/~orc/Code/markdown/discount-%s.tar.bz2' % self.source_version,
                   sha256='702bb29e17e387f82e40fae062d5e4939bc6fb22dcf53e6109982a5faa110796')
 
+        self.run('mv %s/COPYRIGHT %s/%s.txt' % (self.source_dir, self.source_dir, self.name))
+
     def build(self):
         with tools.chdir(self.source_dir):
             flags = '-Oz'
@@ -58,6 +60,8 @@ class DiscountConan(ConanFile):
 
         self.copy('*.h', src='%s/include' % self.install_dir, dst='include')
         self.copy('libmarkdown.%s' % libext, src='%s/lib' % self.install_dir, dst='lib')
+
+        self.copy('%s.txt' % self.name, src=self.source_dir, dst='license')
 
     def package_info(self):
         self.cpp_info.libs = ['markdown']
