@@ -1,4 +1,5 @@
 from conans import ConanFile, tools
+import os
 import platform
 
 class DiscountConan(ConanFile):
@@ -41,7 +42,9 @@ class DiscountConan(ConanFile):
                 'CFLAGS': flags,
             }
             with tools.environment_append(env_vars):
-                self.run('./configure.sh --prefix=../%s --shared --enable-all-features' % self.install_dir)
+                self.run('./configure.sh --prefix=%s/../%s --shared --enable-all-features' % (os.getcwd(), self.install_dir))
+                if platform.system() == 'Linux':
+                    tools.replace_in_file('librarian.sh', '	test "/sbin/ldconfig" && /sbin/ldconfig "$1"', '')
                 self.run('make')
                 self.run('make install')
 
