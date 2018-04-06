@@ -5,8 +5,8 @@ import platform
 class DiscountConan(ConanFile):
     name = 'discount'
 
-    source_version = '2.1.6'
-    package_version = '3'
+    source_version = '2.2.3a'
+    package_version = '1'
     version = '%s-%s' % (source_version, package_version)
 
     build_requires = 'llvm/3.3-5@vuo/stable'
@@ -25,7 +25,7 @@ class DiscountConan(ConanFile):
 
     def source(self):
         tools.get('http://www.pell.portland.or.us/~orc/Code/markdown/discount-%s.tar.bz2' % self.source_version,
-                  sha256='702bb29e17e387f82e40fae062d5e4939bc6fb22dcf53e6109982a5faa110796')
+                  sha256='75f5d5fda2e9607a5c77455296b41e5dd436389e20f35c37bea395d35aea0954')
 
         self.run('mv %s/COPYRIGHT %s/%s.txt' % (self.source_dir, self.source_dir, self.name))
 
