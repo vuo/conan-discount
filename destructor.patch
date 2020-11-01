@@ -1,0 +1,11 @@
+--- setup.c
++++ setup.c
+@@ -31,7 +31,7 @@
+ }
+ 
+ 
+-void DESTRUCTOR
++void
+ mkd_shlib_destructor()
+ {
+     mkd_deallocate_tags();
